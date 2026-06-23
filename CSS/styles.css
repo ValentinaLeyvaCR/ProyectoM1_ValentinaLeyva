@@ -1,0 +1,183 @@
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*hace que el padding no se sume al width si no que se distribuyen*/
+}
+
+/* colores: 
+HEX: es un codigo de color ej: #ec3a8b;
+RGB: esta pensado para pantallas en colores primarios y sus mezclas ej: rgb(236,58,139)
+HSL: es una mezcla del color ajustando tono, saturacion y brillo ej: hsl(330(tono),85%(saturacion),55%(brillo))
+*/
+
+/*variables:
+:root -> es donde se agregan las variables que se van a usar en el css, es como almacenar datos que se pueden reutilizar despues. 
+*/
+
+:root { /*aqui solo varia el brillo, pero es el mismo color*/
+    --color-primario:  hsl(330, 85%, 55%); 
+    --color-primario-claro: hsl(330, 85%, 72%); 
+    --color-primario-oscuro:  hsl(330, 75%, 40%);
+    
+    /*acento*/
+    --color-acento:  hsl(190, 90%, 45%); 
+    --color-acento-oscuro:  hsl(190, 90%, 35%);
+
+    /* neutros para bordes y texto*/
+    --color-fondo: hsl(220, 30%, 98%);
+    --color-superficie: hsl(0, 0%, 100%);
+    --color-borde: hsl(220, 15%, 88%);
+    --color-texto: hsl(220, 25%, 18%);
+    --color-texto-suave: hsl(220, 12%, 45%);
+}
+
+/* base */
+body{
+  font-family: "Arimo", sans-serif;   /*asi es como se agrega la fuente que se linkea al html*/
+  background-color: var(--color-fondo); 
+  color: var(--color-texto);
+  line-height: 1.6; /*esto genera un espacion en arriba y abajo de las letras, se puede llegar a pisar por otro*/
+}
+
+h1, h2, h3{  /*se pueden seleccionar al tiempo para definir para todos*/
+   font-family: "Fredoka", sans-serif;
+   line-height: 1.2;
+   color: var(--color-texto);
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+h2{
+    font-size: 1.75;
+}
+
+h3{
+    font-size: 1.25;
+}
+
+/* header */
+
+.nav{
+    display: flex; /* esto hace que los elementos de nav se coloquen en horizontal, y con esto se activa*/
+    align-items: center; /*centra los elementos en vertical cuando el display: flex esta en horizontal*/
+    justify-content: space-between; /*centra los elementos en horizontal*/
+    padding: 1rem 1.5rem;  /*el primer valor es para arriba y abajo y el segundo para derecha y izquierda,1rem son 16px*/
+    background-color: var(--color-superficie); 
+    box-shadow: 0 1px 3px hsl(200, 25%, 18%); /*esto es para poner sombra*/
+}
+
+.nav-logo{
+    font-family: "Fredoka", sans-serif;
+    font-size: 1.5rem; /*tamaño de la letra*/
+    color: var(--color-primario);
+}
+
+.nav-links{
+    display: flex;
+    gap: 1.5em; ; /*separacion entre elementos hijos (en este caso los li)*/
+    list-style: none; /*con esto se quitan los puntos de los li de la etiqueta ul*/
+}
+
+.nav-link{
+    text-decoration: none; /*esto es para quitar la barra azul del link*/
+    color: var(--color-texto);
+    transition: color 0.2s; /*esto es un complemento del hover, y hace que se demore ese tiempo en hacer el cambio de color, se ve menos brusco*/
+}
+
+.nav-link:hover{ /*funciones visuales que se activan cuando se pasa el cursor sobre el texto o la imagen*/
+    color: var(--color-primario);
+}
+
+/*tener en cuenta: flexbox: trabaja solo en fila o en columna
+                   grid: trabaja en varias diarecciones
+*/
+
+/*main*/
+
+main{
+    max-width: 1100px; /*tamaño maximo estandar de una pantalla*/
+    margin: 0 auto; /*hace que de arriba y de abajo tenga cero pero de derecha e izquierda se centre el contenido*/
+    padding: 2rem 1.5rem;
+}
+
+main h2{
+    margin-bottom: 1rem; /*genera una separacion entre el titulo y el resto del contenido osea en la parte de abajo un espacio*/
+}
+
+/*configuracion responsive con grid de las tarjetas*/
+
+.galeria{
+    display: grid; /*con esto se activa el grid*/
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /*define la cantidad de columnas y que tamaño van a tener, con el repeat se asegura que dependiendo el tamaño de las tarjetas se salten de linea automaticamente, con minmax se define el tamaño*/
+    gap: 1.5rem; /*separacion entre tarjetas*/
+}
+
+/*componente swatch*/
+
+.swatch{
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.75rem;  /*redondeado del borde de la tarjeta*/
+    overflow: hidden; /*para que cualquier cosa que se quiera salir del borde se acomode dentro de el*/
+    background-color: var(--color-superficie);
+    box-shadow: 0 2px 8px hsl(220, 25%, 18%);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.swatch-color{
+    height: 7rem;
+    background-color: var(--color-primario);
+}
+
+.swatch-info{
+    padding: 1rem;
+}
+
+.swatch-nombre{
+    font-family: "Fredoka", sans-serif;
+    font-size: 1rem;
+}
+
+.swatch-codigo{
+    font-size: 0.875rem;
+    color: var(--color-texto-suave);
+}
+
+.swatch-color-claro{
+    background-color: var(--color-primario-claro);
+}
+
+.swatch-color-oscuro{
+    background-color: var(--color-primario-oscuro);
+}
+
+.swatch-color-acento{
+    background-color: var(--color-acento);
+}
+
+.swatch:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px hsl(220, 25%, 18%);
+}
+
+.swatch:focus{
+    outline: 3px solid var(--color-acento-oscuro);
+    outline-offset: 2px;
+}
+
+
+
+/*footer*/
+
+footer{
+    padding: 1.5rem;
+    text-align: center; /*texto alineado al centro*/
+    color: var(--color-texto-suave);
+    border-top: 1px solid var(--color-borde);  /*borde superior en color*/
+    margin-top: 2rem; /*margen superior para separar del borde*/
+}
+
+/*configuracion responsive con grid*/
