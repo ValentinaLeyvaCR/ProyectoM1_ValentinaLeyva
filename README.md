@@ -8,4 +8,4 @@ Generador de paleta de colores interactivo para el proyecto integrador del modul
 
 # Como usar
 
-Abrir index.html en el navegador para usar la pagina funcional. 
+Abrir `index.html` en el navegador para usar la pagina funcional. 
