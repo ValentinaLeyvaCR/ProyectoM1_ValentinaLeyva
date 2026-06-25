@@ -5,23 +5,23 @@
     box-sizing: border-box; /*hace que el padding no se sume al width si no que se distribuyen*/
 }
 
-/* colores: 
+/* colores:
 HEX: es un codigo de color ej: #ec3a8b;
 RGB: esta pensado para pantallas en colores primarios y sus mezclas ej: rgb(236,58,139)
 HSL: es una mezcla del color ajustando tono, saturacion y brillo ej: hsl(330(tono),85%(saturacion),55%(brillo))
 */
 
 /*variables:
-:root -> es donde se agregan las variables que se van a usar en el css, es como almacenar datos que se pueden reutilizar despues. 
+:root -> es donde se agregan las variables que se van a usar en el css, es como almacenar datos que se pueden reutilizar despues.
 */
 
 :root { /*aqui solo varia el brillo, pero es el mismo color*/
-    --color-primario:  hsl(330, 85%, 55%); 
-    --color-primario-claro: hsl(330, 85%, 72%); 
+    --color-primario:  hsl(330, 85%, 55%);
+    --color-primario-claro: hsl(330, 85%, 72%);
     --color-primario-oscuro:  hsl(330, 75%, 40%);
-    
+
     /*acento*/
-    --color-acento:  hsl(190, 90%, 45%); 
+    --color-acento:  hsl(190, 90%, 45%);
     --color-acento-oscuro:  hsl(190, 90%, 35%);
 
     /* neutros para bordes y texto*/
@@ -35,7 +35,7 @@ HSL: es una mezcla del color ajustando tono, saturacion y brillo ej: hsl(330(ton
 /* base */
 body{
   font-family: "Arimo", sans-serif;   /*asi es como se agrega la fuente que se linkea al html*/
-  background-color: var(--color-fondo); 
+  background-color: var(--color-fondo);
   color: var(--color-texto);
   line-height: 1.6; /*esto genera un espacion en arriba y abajo de las letras, se puede llegar a pisar por otro*/
 }
@@ -65,7 +65,7 @@ h3{
     align-items: center; /*centra los elementos en vertical cuando el display: flex esta en horizontal*/
     justify-content: space-between; /*centra los elementos en horizontal*/
     padding: 1rem 1.5rem;  /*el primer valor es para arriba y abajo y el segundo para derecha y izquierda,1rem son 16px*/
-    background-color: var(--color-superficie); 
+    background-color: var(--color-superficie);
     box-shadow: 0 1px 3px hsl(200, 25%, 18%); /*esto es para poner sombra*/
 }
 
@@ -111,6 +111,7 @@ main h2{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-end;
+    justify-content: space-between;
     gap: 1rem;
     padding: 1.25rem;
     margin-bottom: 1.5rem;
@@ -122,12 +123,13 @@ main h2{
 
 .controles-campo{
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 0.35rem;
 }
 
 .controles-label{
-    font-size: 0.875rem;
+    font-family: "Fredoka", sans-serif;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--color-texto-suave);
 }
@@ -139,7 +141,7 @@ main h2{
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    transition: 
+    transition:
       background-color 0.2s ease;
       transform: 0.1s ease;
 }
@@ -156,6 +158,18 @@ main h2{
 .boton-primario:active{
     transform: translateY(1px);
 }
+
+.select{
+    font-family: "Fredoka", sans-serif;
+    font-size: 1rem;
+    padding: 0.65rem 2.25rem 0.65rem 0.9rem;
+    border: 2px solid var(--color-borde);
+    border-radius: 0.5rem;
+    background-color: var(--color-superficie);
+    color: var(--color-texto);
+    cursor: pointer;
+}
+
 
 /*configuracion responsive con grid de las tarjetas*/
 
@@ -222,7 +236,7 @@ main h2{
 
 @keyframes swatch-aparece{
     from {
-        opacity: 0; 
+        opacity: 0;
         transform: translateY(10px);
     }
     to {
