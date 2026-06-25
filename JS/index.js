@@ -69,17 +69,41 @@ function renderPaleta(cantidad) { //esta funcion renderiza la paleta para que ca
 const boton = document.getElementById("generar"); //eso srive para darle funcion al boton generar paleta 
 const selector = document.getElementById("cantidad"); //esto le da funcion al desplegable de selector de cantidad de colores que se deben generar
 
+//mensaje de aviso de accion
+const mensaje = document.getElementById("mensaje");
+let mensajeTimeoutId = null; // aqui guardamos el tiempo que esta esperando para esconder el mensaje
+
+function mostrarMensaje(texto) {
+    if (!mensaje) return; 
+
+mensaje.textContent = texto;
+    mensaje.classList.add("mensaje-visible");
+
+if (mensajeTimeoutId) {
+        clearTimeout(mensajeTimeoutId);
+}
+
+mensajeTimeoutId = setTimeout(function () {
+        mensaje.classList.remove("mensaje-visible");
+    }, 2200); 
+}
+
+
 if (boton) { // con este if se le dice que cantidad de colores debe generar al activar el evento con el click
     boton.addEventListener("click", function () { 
         const cantidad = Number(selector.value);  //esto es lo que debe pasar cuando se de click al boton generar la cantidad seleccionada en el desplegable, el Number lo convierte de string a numero
         renderPaleta(cantidad);
+        mostrarMensaje("Nueva paleta generada");
     });    
 } else { 
     console.log("no existe un boton para apretar");
 }
 
 selector.addEventListener("change", function () { // esta funcion sirve para que cada que se seleccione la cantidad en el desplegable se actualice el color sin oprimir el boton generar
-    renderPaleta(Number(selector.value)); 
+    const cantidad = Number(selector.value);
+    renderPaleta(cantidad);
+    mostrarMensaje(cantidad + " colores generados"); 
+
 });
 renderPaleta(6); //esto hace que apenas se abra la pagina se generen 6 colores por defecto
 

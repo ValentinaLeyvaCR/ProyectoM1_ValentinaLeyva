@@ -326,4 +326,25 @@ footer{
 
 /*configuracion responsive con grid*/
 
+.mensaje{
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translate(-50%, 1rem);
+    background-color: var(--color-texto);
+    color: var(--color-fondo);
+    font-family: "Fredoka", sans-serif;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--sombra-fuerte);
+    opacity: 0; /*por defecto invisible*/
+    pointer-events: none; /*para que no se pueda hacer click en el mensaje ni bloquee clicks de lo que esta detras*/
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 50; /*para que quede por encima de todo lo demas*/
+}
 
+.mensaje-visible{
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
