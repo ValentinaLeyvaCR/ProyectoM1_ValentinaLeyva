@@ -83,4 +83,20 @@ selector.addEventListener("change", function () { // esta funcion sirve para que
 });
 renderPaleta(6); //esto hace que apenas se abra la pagina se generen 6 colores por defecto
 
+//Cambio de tema de oscuro a claro
 
+const botonTema = document.getElementById("tema-claro"); 
+
+if (botonTema) {
+    botonTema.addEventListener("click", function () {
+        const temaActual = document.documentElement.getAttribute("data-theme");
+        const nuevoTema = temaActual === "light" ? "dark" : "light";
+
+        document.documentElement.setAttribute("data-theme", nuevoTema);
+
+        localStorage.setItem("arcobaleno-tema", nuevoTema);
+
+        });
+} else {
+    console.log("no existe un boton de tema para apretar");
+    }
