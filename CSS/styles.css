@@ -295,6 +295,11 @@ main p{
 .swatch-codigo{
     font-size: 0.875rem;
     color: var(--color-texto-suave);
+    cursor: pointer;
+}
+
+.swatch-codigo:hover{
+    text-decoration: underline;
 }
 
 .swatch-color-claro{

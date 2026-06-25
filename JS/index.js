@@ -34,25 +34,30 @@ function crearSwatch(colorHSL, colorHEX, nombre, indice, bloqueado){  //esta fun
     //Aqui se crea un elemento p donde se vera el nombre del color que sera el que corresponda al parametro nombre
     
     const elCodigo = document.createElement("p");
-    elCodigo.className = "swatch-codigo"; //aqui el codigo del color
+    elCodigo.className = "swatch-codigo"; //aqui va el codigo de color
     elCodigo.textContent = colorHEX + " . " + colorHSL;
+
+    // Copiar HEX al hacer clic
+    elCodigo.addEventListener("click", function () {
+    navigator.clipboard.writeText(colorHEX);
+    mostrarMensaje("HEX copiado: " + colorHEX);
+
+    });
     //Aqui se genera otro p que mostrara el codigo del color en hex y en hsl, y se debe generar la estructura de como se debe ver 
 
+    
+    //Aqui se genera el boton de bloqueo y desbloque de los colores de la paleta
+
     const botonBloqueo = document.createElement("button");
-
-    botonBloqueo.textContent = bloqueado ? "🔒" : "🔓";
-
+    botonBloqueo.textContent = bloqueado ? "Bloqueado" : "Desbloqueado";
     botonBloqueo.className = "boton-bloqueo";
-
     botonBloqueo.addEventListener("click", function(){
-
     paletaActual[indice].bloqueado =
         !paletaActual[indice].bloqueado;
-
     botonBloqueo.textContent =
         paletaActual[indice].bloqueado
-        ? "🔒"
-        : "🔓";
+        ? "Bloqueado"
+        : "Desbloqueado";
     });
     
     info.append(elNombre, elCodigo, botonBloqueo); //el appendChild sirve para agregar los hijos a la etiqueta padre, osea en este caso meter los dos p elNonbre y elCodigo dentro del div info
