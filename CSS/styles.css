@@ -16,7 +16,7 @@ HSL: es una mezcla del color ajustando tono, saturacion y brillo ej: hsl(330(ton
 */
 
 :root { /*aqui solo varia el brillo, pero es el mismo color*/
-    --color-primario: hsl(330, 90%, 68%);
+    --color-primario: hsl(0, 0%, 100%);
     --color-primario-claro: hsl(330, 90%, 78%);
     --color-primario-oscuro: hsl(330, 80%, 52%);
 
@@ -37,18 +37,18 @@ HSL: es una mezcla del color ajustando tono, saturacion y brillo ej: hsl(330(ton
 
 /*estos son los colores para el tema claro*/
 [data-theme="light"] {
-    --color-primario: hsl(330, 85%, 55%);
+    --color-primario: hsl(0, 0%, 0%);
     --color-primario-claro: hsl(330, 85%, 72%);
     --color-primario-oscuro: hsl(330, 75%, 40%);
  
     --color-acento: hsl(190, 90%, 45%);
     --color-acento-oscuro: hsl(190, 90%, 35%);
  
-    --color-fondo: hsl(220, 30%, 98%);
-    --color-superficie: hsl(0, 0%, 100%);
+    --color-fondo: hsl(45, 100%, 98%);
+    --color-superficie: hsl(0, 7%, 92%);
     --color-borde: hsl(220, 15%, 88%);
-    --color-texto: hsl(220, 25%, 18%);
-    --color-texto-suave: hsl(220, 12%, 45%);
+    --color-texto: hsl(0, 0%, 0%);
+    --color-texto-suave: hsl(0, 1%, 22%);
 
     --sombra-suave: 0 2px 8px hsla(220, 25%, 18%, 0.12);
     --sombra-fuerte: 0 8px 20px hsla(220, 25%, 18%, 0.18);
