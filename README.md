@@ -24,9 +24,9 @@ Arcobaleno Studio es una aplicación web que permite generar paletas de colores 
 
 # 🖼️ Capturas de la aplicación
 
-## Tema oscuro
+## Tema claro
 
-![Generación de paleta](./capturas/generar-paleta.png)
+![Generación de paleta](./capturas/tema-claro.png)
 
 ## Tema oscuro
 
@@ -99,7 +99,7 @@ Los colores y estilos principales fueron definidos mediante variables CSS para f
 # 📁 Estructura del proyecto
 
 ```text
-arcobaleno-studio/
+PROYECTOM1_VALENTINALEYVA
 │
 ├── index.html
 │
@@ -120,16 +120,18 @@ arcobaleno-studio/
 │   └── demo.gif
 │
 └── IA/
-    ├── prompt-bloqueo.png
-    ├── bloque-1.png
-    ├── bloque-2.png
-    ├── bloque-3.png
-    ├── bloque-4.png
-    ├── bloque-5.png
-    ├── prompt-copiar-hex.png
-    ├── copiar-1.png
-    ├── copiar-2.png 
-    └── copiar-3.png
+│    ├── prompt-bloqueo.png
+│    ├── bloque-1.png
+│    ├── bloque-2.png
+│    ├── bloque-3.png
+│    ├── bloque-4.png
+│    ├── bloque-5.png
+│    ├── prompt-copiar-hex.png
+│    ├── copiar-1.png
+│    ├── copiar-2.png 
+│    └── copiar-3.png
+│
+└── README.md
 
 ```
 
@@ -162,7 +164,7 @@ La aplicación puede visualizarse mediante GitHub Pages.
 Agregar aquí el enlace publicado:
 
 ```text
-https://TU-USUARIO.github.io/ProyectoM1_ValentinaLeyva/
+https://valentinaleyvacr.github.io/ProyectoM1_ValentinaLeyva/
 ```
 
 ---
