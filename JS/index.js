@@ -14,7 +14,7 @@ function hslToHex(h, s, l) {
 }
 
 
-function crearSwatch(colorHSL, colorHEX, nombre){  //esta funcion lo que hace es crear la misma estructura del article de html para que se vayan generando de manera automatica 
+function crearSwatch(colorHSL, colorHEX, nombre, indice, bloqueado){  //esta funcion lo que hace es crear la misma estructura del article de html para que se vayan generando de manera automatica 
     const swatch = document.createElement("article");
     swatch.className = "swatch"; //"swatch" cuando se muestra el color y la informacion abajo
     
@@ -37,12 +37,30 @@ function crearSwatch(colorHSL, colorHEX, nombre){  //esta funcion lo que hace es
     elCodigo.className = "swatch-codigo"; //aqui el codigo del color
     elCodigo.textContent = colorHEX + " . " + colorHSL;
     //Aqui se genera otro p que mostrara el codigo del color en hex y en hsl, y se debe generar la estructura de como se debe ver 
+
+    const botonBloqueo = document.createElement("button");
+
+    botonBloqueo.textContent = bloqueado ? "🔒" : "🔓";
+
+    botonBloqueo.className = "boton-bloqueo";
+
+    botonBloqueo.addEventListener("click", function(){
+
+    paletaActual[indice].bloqueado =
+        !paletaActual[indice].bloqueado;
+
+    botonBloqueo.textContent =
+        paletaActual[indice].bloqueado
+        ? "🔒"
+        : "🔓";
+    });
     
-    info.append(elNombre, elCodigo); //el appendChild sirve para agregar los hijos a la etiqueta padre, osea en este caso meter los dos p elNonbre y elCodigo dentro del div info
+    info.append(elNombre, elCodigo, botonBloqueo); //el appendChild sirve para agregar los hijos a la etiqueta padre, osea en este caso meter los dos p elNonbre y elCodigo dentro del div info
     swatch.append(color, info);
     
     return swatch;
 }
+
 
 //esta funcion lo que hace es generar el hsl generando aleatoriamente solo la h del hsl, y genera tambien el hex de la misma manera usando el codigo hsl para generar el hex y esos dos resultados los guarda en un objeto
 function generarColor(){ 
@@ -55,15 +73,51 @@ function generarColor(){
 
 const galeria = document.getElementById("galeria");
 
+let paletaActual = [];
+
 function renderPaleta(cantidad) { //esta funcion renderiza la paleta para que cada que se genere una nueva paleta cambien los datos 
-    galeria.innerHTML = ""; // limpia todos los colores que ya estan y se generan unos nuevos 
-    
-    for (let i = 0; i < cantidad; i++){ // este for es el encargado de generar las paleta con el color y numerarlas segun la cantidad indicada
+    while (paletaActual.length < cantidad){
+
         const color = generarColor();
-        const swatch = crearSwatch(color.hsl, color.hex, "Color " + (i + 1));
+
+        paletaActual.push({
+            hsl: color.hsl,
+            hex: color.hex,
+            bloqueado: false
+        });
+    }
+
+    if (paletaActual.length > cantidad){
+        paletaActual.length = cantidad;
+    }
+
+    for (let i = 0; i < paletaActual.length; i++){
+
+        if (!paletaActual[i].bloqueado){
+
+            const nuevoColor = generarColor();
+
+            paletaActual[i].hsl = nuevoColor.hsl;
+            paletaActual[i].hex = nuevoColor.hex;
+        }
+    }
+
+    galeria.innerHTML = "";
+
+    for (let i = 0; i < paletaActual.length; i++){
+
+        const color = paletaActual[i];
+
+        const swatch = crearSwatch(
+            color.hsl,
+            color.hex,
+            "Color " + (i + 1),
+            i,
+            color.bloqueado
+        );
+
         galeria.appendChild(swatch);
-    };
-    
+    }
 }
 
 const boton = document.getElementById("generar"); //eso srive para darle funcion al boton generar paleta 
@@ -105,6 +159,20 @@ selector.addEventListener("change", function () { // esta funcion sirve para que
     mostrarMensaje(cantidad + " colores generados"); 
 
 });
+
+paletaActual = [];
+
+for(let i = 0; i < 6; i++){
+
+    const color = generarColor();
+
+    paletaActual.push({
+        hsl: color.hsl,
+        hex: color.hex,
+        bloqueado: false
+    });
+}
+
 renderPaleta(6); //esto hace que apenas se abra la pagina se generen 6 colores por defecto
 
 //Cambio de tema de oscuro a claro

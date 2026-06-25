@@ -21,8 +21,8 @@ HSL: es una mezcla del color ajustando tono, saturacion y brillo ej: hsl(330(ton
     --color-primario-oscuro: hsl(330, 80%, 52%);
 
     /*acento*/
-    --color-acento: hsl(190, 90%, 60%);
-    --color-acento-oscuro: hsl(190, 85%, 48%);
+    --color-acento: hsl(195, 2%, 68%);
+    --color-acento-oscuro: hsl(0, 1%, 30%);
 
     /* neutros para bordes y texto*/
     --color-fondo: hsl(250, 32%, 10%);
@@ -41,8 +41,8 @@ HSL: es una mezcla del color ajustando tono, saturacion y brillo ej: hsl(330(ton
     --color-primario-claro: hsl(330, 85%, 72%);
     --color-primario-oscuro: hsl(330, 75%, 40%);
  
-    --color-acento: hsl(190, 90%, 45%);
-    --color-acento-oscuro: hsl(190, 90%, 35%);
+    --color-acento: hsl(189, 8%, 17%);
+    --color-acento-oscuro: hsl(0, 1%, 30%);
  
     --color-fondo: hsl(45, 100%, 98%);
     --color-superficie: hsl(0, 7%, 92%);
@@ -221,6 +221,27 @@ main p{
     transform: translateY(1px);
 }
 
+.boton-bloqueo{
+    margin-top: .75rem;
+    width: 100%;
+    border: 1px solid var(--color-borde);
+    background: transparent;
+    color: var(--color-texto);
+    border-radius: .5rem;
+    cursor: pointer;
+    padding: .4rem;
+    font-size: 1rem;
+}
+
+.boton-bloqueo:hover{
+    border-color: var(--color-acento);
+}
+
+.boton-bloqueo:focus-visible{
+    outline: 3px solid var(--color-acento);
+    outline-offset: 2px;
+}
+
 .select{
     font-family: "Fredoka", sans-serif;
     font-size: 1rem;
@@ -230,6 +251,10 @@ main p{
     background-color: var(--color-superficie);
     color: var(--color-texto);
     cursor: pointer;
+}
+
+.select:focus-visible {
+    outline: 3px solid var(--color-acento);
 }
 
 
